@@ -1,6 +1,12 @@
 import os
 import colorama
-from colorama import init, Fore, Style
+
+#Colors
+def green(txt):
+    print("\033[32m{}".format(txt))
+
+def white():
+    print("\033[0m")
 
 init()
 
@@ -16,7 +22,7 @@ itr = 0
 for line in lines:
     os.system("mkdir fs" + str(itr))    
     os.system("timeout "  + timeout + " curlftpfs ftp://" + line.strip() + " fs" + str(itr))
-    print("[" + Fore.GREEN + "+" + Style.RESET_ALL + "]" + " fs number "  + str(itr) + " (" + line.strip() + ")" + " done")
+    print("[" + green("+") + white("]") + " fs number "  + str(itr) + " (" + line.strip() + ")" + " done")
     itr += 1
 
 remove = input("Remove the file system(y/N)\n>> ")
